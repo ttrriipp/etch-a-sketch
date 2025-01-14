@@ -2,23 +2,27 @@ const container = document.querySelector('.container');
 
 const COLUMN_COUNT = 16;
 const ROW_COUNT = 16;
-let gridSize = 0;
+let gridSize;
 
 const button = document.createElement("button");
 container.appendChild(button);
 button.style.height = "500px";
 button.textContent = "new grid";
 button.addEventListener('click', () => {
-    while (gridSize > 100 || gridSize < 0) {
+    do {
         gridSize = prompt("size of grid?");
-    } 
+    }
+    while (gridSize > 100 || gridSize < 0);
+    
     if (gridSize != null) {
+        removeGrid();
         makeGrid(gridSize, gridSize);
+        
     }
 });
 
 makeGrid(COLUMN_COUNT, ROW_COUNT);
-hoverEffect();
+
 
 function hoverEffect() {
     const box = document.querySelectorAll('.box');
@@ -28,7 +32,6 @@ function hoverEffect() {
         });
     });
 }
-
 
 function makeGrid(column, row) {
     for (let i = 0; i < row; i++) {
@@ -44,6 +47,14 @@ function makeGrid(column, row) {
             rowBoxContainer.appendChild(box);
         }
     }
+    hoverEffect();
+}
+
+function removeGrid() {
+    const boxRowContainer = document.querySelectorAll('.row-box-container');
+    boxRowContainer.forEach (cell => {
+        container.removeChild(cell);
+    });
 }
 
 
