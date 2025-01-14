@@ -16,3 +16,11 @@ for (let i = 0; i < ROW_COUNT; i++) {
         rowBoxContainer.appendChild(box);
     }
 }
+
+const box = document.querySelectorAll('.box');
+
+box.forEach (cell => {
+    cell.addEventListener('mouseenter', () => {
+        cell.style.backgroundColor = 'blue';
+    });
+});
