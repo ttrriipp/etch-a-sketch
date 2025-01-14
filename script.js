@@ -26,11 +26,19 @@ makeGrid(COLUMN_COUNT, ROW_COUNT);
 
 function hoverEffect() {
     const box = document.querySelectorAll('.box');
+   
     box.forEach (cell => {
         cell.addEventListener('mouseenter', () => {
-            cell.style.backgroundColor = 'blue';
+            let red = Math.floor(Math.random() * 256);
+            let green = Math.floor(Math.random() * 256);
+            let blue =  Math.floor(Math.random() * 256);
+            let rgbValue = "rgb("+red+"," +green+"," +blue +")";
+
+            cell.style.backgroundColor = rgbValue;
         });
     });
+
+
 }
 
 function makeGrid(column, row) {
